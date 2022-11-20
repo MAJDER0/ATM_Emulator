@@ -85,8 +85,15 @@ namespace ATM_Emulator
                             Console.WriteLine("\nPlease enter how much would you like to withdraw: \n");
                             Console.ResetColor();
                             WithDrawValue = long.Parse(Console.ReadLine());
-                            context.Logins.SingleOrDefault(a => a.Username == LogIn.login).AccountBalance -= WithDrawValue;
-                            context.Logins.SingleOrDefault(a => a.Username == LogIn.login).TransacationHistory += $"-{WithDrawValue},";
+                            if ((context.Logins.SingleOrDefault(a => a.Username == LogIn.login).AccountBalance -= WithDrawValue) > 0)
+                            {
+                                context.Logins.SingleOrDefault(a => a.Username == LogIn.login).AccountBalance -= WithDrawValue;
+                                context.Logins.SingleOrDefault(a => a.Username == LogIn.login).TransacationHistory += $"-{WithDrawValue},";
+                            }
+                            else 
+                            {
+                                context.Logins.SingleOrDefault(a => a.Username == LogIn.login).AccountBalance=0;
+                            }
                             context.SaveChanges();
                             goto start;
                         }
