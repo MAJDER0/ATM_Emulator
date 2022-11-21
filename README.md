@@ -19,5 +19,11 @@ Once we're in, we click CTRL + F and enter this: .UseSqlServer to find the metho
    So basically, all you have to do is to copy your Server name which you copied before, and replace it right here : Server=YOUR_SERVER_NAME;
    
    It should look more over like this: .UseSqlServer("Server=Your_Server_Name;Database=ATM;Encrypt=False;Trusted_Connection=True;");
+   
+   Save changes(CTRL+S)
 
-Once you're done, you can save changes (CTRL+S) and run a program. 
+The last thing we need to do, is to make sure that entities and data are properly connected with database. To do this, we click Tools bookmark
+(top of screen in Visual Studio) and we look for NetGet Package Manager. Once we find it, we choose Package Manager Console.
+Console will be shown on the bottom of screen. You copy and paste this to the console: Update-Database
+
+Once you're done, you can run a program. 
