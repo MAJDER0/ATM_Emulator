@@ -52,7 +52,7 @@ namespace ATM_Emulator
 
                             DepositValue = decimal.Parse(Console.ReadLine());
                             context.Logins.SingleOrDefault(a => a.Username == LogIn.login).AccountBalance += DepositValue;
-                            context.Logins.SingleOrDefault(a => a.Username == LogIn.login).TransacationHistory += $"+{DepositValue},";
+                            context.Logins.SingleOrDefault(a => a.Username == LogIn.login).TransacationHistory += $"+{DepositValue};";
                             context.SaveChanges();
 
                             Console.ForegroundColor = ConsoleColor.DarkGreen;
@@ -89,7 +89,7 @@ namespace ATM_Emulator
                             if ((context.Logins.SingleOrDefault(a => a.Username == LogIn.login).AccountBalance -= WithDrawValue) > 0)
                             {
                                 context.Logins.SingleOrDefault(a => a.Username == LogIn.login).AccountBalance -= WithDrawValue-WithDrawValue;
-                                context.Logins.SingleOrDefault(a => a.Username == LogIn.login).TransacationHistory += $"-{WithDrawValue},";
+                                context.Logins.SingleOrDefault(a => a.Username == LogIn.login).TransacationHistory += $"-{WithDrawValue};";
                                 context.SaveChanges();
 
                                 Console.ForegroundColor = ConsoleColor.DarkGreen;
