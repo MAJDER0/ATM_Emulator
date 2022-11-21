@@ -16,6 +16,6 @@ and click clone.
 
 When you already see the project opened, we want to go AtmContext class which is located in Entities Folder.
 Once we're in, we click CTRL + F and enter this: .UseSqlServer to find the method in which we want to swap Server=XXX\\SQLEXPRESS
-So basically, all you have to do is to copy your Server name which you copied befor here : Server=YOUR_SERVER_NAME;
+   So basically, all you have to do is to copy your Server name which you copied before here : Server=YOUR_SERVER_NAME;
 
 Once you're done, you can save changes (CTRL+S) and run a program. 
