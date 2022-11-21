@@ -41,7 +41,7 @@ namespace ATM_Emulator
 
                     if (choosenOption == 1)
                     {
-                        long DepositValue;
+                        decimal DepositValue;
                     enterdeposit:
 
                         try
@@ -50,7 +50,7 @@ namespace ATM_Emulator
                             Console.WriteLine("\nPlease enter how much would you like to deposit: \n");
                             Console.ResetColor();
 
-                            DepositValue = long.Parse(Console.ReadLine());
+                            DepositValue = decimal.Parse(Console.ReadLine());
                             context.Logins.SingleOrDefault(a => a.Username == LogIn.login).AccountBalance += DepositValue;
                             context.Logins.SingleOrDefault(a => a.Username == LogIn.login).TransacationHistory += $"+{DepositValue},";
                             context.SaveChanges();
@@ -76,7 +76,7 @@ namespace ATM_Emulator
                     if (choosenOption == 2)
                     {
 
-                        long WithDrawValue;
+                        decimal WithDrawValue;
                     enterwithdraw:
 
                         try
@@ -84,7 +84,7 @@ namespace ATM_Emulator
                             Console.ForegroundColor = ConsoleColor.DarkMagenta;
                             Console.WriteLine("\nPlease enter how much would you like to withdraw: \n");
                             Console.ResetColor();
-                            WithDrawValue = long.Parse(Console.ReadLine());
+                            WithDrawValue = decimal.Parse(Console.ReadLine());
 
                             if ((context.Logins.SingleOrDefault(a => a.Username == LogIn.login).AccountBalance -= WithDrawValue) > 0)
                             {
