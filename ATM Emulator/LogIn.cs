@@ -48,7 +48,9 @@ namespace ATM_Emulator
 
                                     if (passwordcheck != null)
                                     {
+                                        Console.Clear();
                                         HomeScreen.Screen();
+                                        
                                     }
                                     else 
                                     {

@@ -59,7 +59,7 @@ namespace ATM_Emulator
                             Console.WriteLine("\nFunds have been added to your account. Press any key to continue");
                             Console.ResetColor();
                             Console.ReadLine();
-                            continue;
+                            Console.Clear();
                             goto start;
                         }
                         catch
@@ -85,17 +85,31 @@ namespace ATM_Emulator
                             Console.WriteLine("\nPlease enter how much would you like to withdraw: \n");
                             Console.ResetColor();
                             WithDrawValue = long.Parse(Console.ReadLine());
+
                             if ((context.Logins.SingleOrDefault(a => a.Username == LogIn.login).AccountBalance -= WithDrawValue) > 0)
                             {
-                                context.Logins.SingleOrDefault(a => a.Username == LogIn.login).AccountBalance -= WithDrawValue;
+                                context.Logins.SingleOrDefault(a => a.Username == LogIn.login).AccountBalance -= WithDrawValue-WithDrawValue;
                                 context.Logins.SingleOrDefault(a => a.Username == LogIn.login).TransacationHistory += $"-{WithDrawValue},";
+                                context.SaveChanges();
+
+                                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                                Console.WriteLine("\nFunds have been withdrawn.Press any key to continue");
+                                Console.ResetColor();
+                                Console.ReadLine();
+                                Console.Clear();
+                                goto start;
                             }
-                            else 
+                            else
                             {
-                                context.Logins.SingleOrDefault(a => a.Username == LogIn.login).AccountBalance=0;
+                                context.Logins.SingleOrDefault(a => a.Username == LogIn.login).AccountBalance = 0;
+                                context.SaveChanges();
+                                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                                Console.WriteLine("\nFunds have been withdrawn.Press any key to continue");
+                                Console.ResetColor();
+                                Console.ReadLine();
+                                Console.Clear();
+                                goto start;
                             }
-                            context.SaveChanges();
-                            goto start;
                         }
                         catch
                         {
@@ -106,36 +120,30 @@ namespace ATM_Emulator
 
                         }
 
-                        Console.ForegroundColor = ConsoleColor.DarkGreen;
-                        Console.WriteLine("\nFunds have been withdrawn.Press any key to continue");
-                        Console.ResetColor();
-                        Console.ReadLine();
-                        continue;
-
                     }
 
                     if (choosenOption == 3)
                     {
                         Console.ForegroundColor = ConsoleColor.DarkMagenta;
-                        Console.WriteLine("\nThis is your transaction history. Press any key to come back.");
+                        Console.WriteLine("\nThis is your transaction history. Press any key to come back.\n");
                         Console.ResetColor();
 
                         Console.WriteLine(context.Logins.SingleOrDefault(a => a.Username == LogIn.login).TransacationHistory);
 
                         Console.ReadLine();
-
+                        Console.Clear();
+                        goto start;
                     }
 
                     if (choosenOption == 4)
                     {
-                        break;                      
+                        Console.Clear();
+                        break;
                     }
 
                     else
                     {
-                        Console.ForegroundColor = ConsoleColor.DarkRed;
-                        Console.WriteLine("Please choose correct one!");
-                        Console.ResetColor();
+                        Console.Clear();
                         continue;
                     }
 

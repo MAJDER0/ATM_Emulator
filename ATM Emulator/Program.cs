@@ -9,6 +9,7 @@ while (true)
     Console.ResetColor();
     Console.WriteLine("(1) Create an account");
     Console.WriteLine("(2) Log in");
+    Console.WriteLine("(3) Exit\n");
 
     while (true)
     {
@@ -25,6 +26,11 @@ while (true)
         {
             new LogIn().Log();
             break;
+        }
+
+        if (ChoosenOption == 3)
+        {
+            Environment.Exit(0);
         }
 
         else

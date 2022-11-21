@@ -63,6 +63,7 @@ namespace ATM_Emulator
                             Console.ResetColor();
 
                             Console.ReadLine();
+                            Console.Clear();
                             break;
                         }
 
