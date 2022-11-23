@@ -22,7 +22,7 @@ Once we're in, we click CTRL + F and enter this: .UseSqlServer to find the metho
    
    Save changes(CTRL+S)
 
-The last thing we need to do, is to make sure that entities and data are properly connected with database. To do this, we click Tools bookmark
+The last thing we need to do, is to make sure that entities and data are properly connected with database. To do this, we click Tools tab
 (top of screen in Visual Studio) and we look for NetGet Package Manager. Once we find it, we choose Package Manager Console.
 Console will be shown on the bottom of screen. You copy and paste this to the console: Update-Database
 
